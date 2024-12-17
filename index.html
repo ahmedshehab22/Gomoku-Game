@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="author" content="Luca Bontempi" />
+    <meta
+      name="description"
+      content="Gomoku online game. Play against a friend or an AI opponent. Choose between different difficulty levels"
+    />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width"
+    />
+    <link rel="icon" type="image/png" href="images/icon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Gomoku</title>
+
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+    <link rel="stylesheet" href="style/style.css" type="text/css" />
+
+    <script src="js/Player.js" type="text/javascript"></script>
+    <script src="js/Board.js" type="text/javascript"></script>
+    <script src="js/Game.js" type="text/javascript"></script>
+    <script src="js/layout.js" type="text/javascript"></script>
+    <script src="js/interface.js" type="text/javascript"></script>
+    <script src="js/storage.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="fullscreen-wrapper" id="happy-outer">
+      <img src="images/happy.gif" class="happy-face screen-center" />
+    </div>
+    <div class="fullscreen-wrapper" id="sad-outer">
+      <img src="images/sad.gif" class="sad-face screen-center" />
+    </div>
+    <div data-role="page" data-theme="w" id="game-page" class="no-background">
+      <div data-role="content" class="center no-padding">
+        <div id="game-region">
+          <div id="main-but-group" class="game-ult">
+            <a href="#new-game" class="button">Restart</a>
+            <a href="#" id="undo-button" class="button">Undo</a>
+          </div>
+          <div id="other-but-group" class="game-ult">
+            <a href="#help-page" id="help-button" class="button">About</a>
+          </div>
+          <div class="go-board" data-enhance="false"></div>
+          <table class="board" data-enhance="false">
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div id="game-won" data-theme="a" data-role="dialog">
+      <div data-role="header">
+        <h4>You Win!</h4>
+      </div>
+      <div data-role="content">
+        <div id="win-content">You have won the game! Play again?</div>
+        <fieldset class="ui-grid-a">
+          <div class="ui-block-a">
+            <button class="back-to-game" data-theme="c">Back</button>
+          </div>
+          <div class="ui-block-b">
+            <a href="#new-game" data-rel="dialog" data-role="button">
+              New Game
+            </a>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div id="new-game" data-theme="a" data-role="dialog" class="long-dialog">
+      <div data-role="header">
+        <h4>Gomoku</h4>
+      </div>
+      <div data-role="content">
+        <fieldset data-role="controlgroup" id="mode-select">
+          <legend>Opponent</legend>
+          <input
+            type="radio"
+            name="radio-choice-1"
+            id="radio-mode-vshuman"
+            value="vshuman"
+          />
+          <label for="radio-mode-vshuman">Buddy</label>
+
+          <input
+            type="radio"
+            name="radio-choice-1"
+            id="radio-mode-vscomputer"
+            value="vscomputer"
+          />
+          <label for="radio-mode-vscomputer">AI</label>
+        </fieldset>
+
+        <fieldset
+          data-role="controlgroup"
+          id="color-select"
+          class="vs-computer"
+        >
+          <legend>Color</legend>
+          <input
+            type="radio"
+            name="radio-choice-2"
+            id="radio-color-black"
+            value="black"
+          />
+          <label for="radio-color-black">Dark</label>
+
+          <input
+            type="radio"
+            name="radio-choice-2"
+            id="radio-color-white"
+            value="white"
+          />
+          <label for="radio-color-white">Light</label>
+        </fieldset>
+
+        <fieldset
+          data-role="controlgroup"
+          id="level-select"
+          class="vs-computer"
+        >
+          <legend>Difficulty</legend>
+          <input
+            type="radio"
+            name="radio-choice-3"
+            id="radio-level-novice"
+            value="novice"
+          />
+          <label for="radio-level-novice">Noob</label>
+
+          <input
+            type="radio"
+            name="radio-choice-3"
+            id="radio-level-medium"
+            value="medium"
+          />
+          <label for="radio-level-medium">Regular</label>
+
+          <input
+            type="radio"
+            name="radio-choice-3"
+            id="radio-level-expert"
+            value="expert"
+          />
+          <label for="radio-level-expert">Pro</label>
+        </fieldset>
+        <fieldset class="ui-grid-a">
+          <div class="ui-block-a">
+            <button class="back-to-game" data-theme="c">Back</button>
+          </div>
+          <div class="ui-block-b">
+            <button id="start-game" data-theme="b">Start</button>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </body>
+</html>
